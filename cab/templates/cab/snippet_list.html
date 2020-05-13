@@ -1,0 +1,12 @@
+{% load static %}
+<html>
+
+  <head>
+    <link rel="stylesheet" href='{% static "cab/pygments.css" %}'>
+  </head>
+  <body>
+    {% for obj in object_list %}
+      <p>{{obj.highlighted_code | safe}}</p>
+    {% endfor %}
+  </body>
+</html>
