@@ -10,6 +10,7 @@ django = "*"
 pygments = "*"
 django-tagging = "*"
 markdown = "*"
+django-debug-toolbar = "*"
 
 [requires]
 python_version = "3.6"

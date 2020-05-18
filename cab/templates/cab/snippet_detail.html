@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>{{ object.title | safe}}</h2>
+  <p>{{ object.highlighted_code |safe }}</p>
+{% endblock content %}

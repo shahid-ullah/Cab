@@ -54,7 +54,7 @@ class Snippet(models.Model):
         super(Snippet, self).save(force_insert, force_update)
 
     def get_absolute_url(self):
-        return reverse("snippet_detail/", args=[self.id,])
+        return reverse("snippet_detail", args=[self.id,])
 
     def highlight(self):
         return highlight(self.code, self.language.get_lexer(),

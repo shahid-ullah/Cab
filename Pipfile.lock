@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "115307105a94e0636cbf3142b403a2ac5cbfb6d223c2ca4baf1c8b2e6d05b5f0"
+            "sha256": "fd62748efa5d23edd38a71caae839665117183e9b95bef05b43bb82ca3a91b47"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -31,6 +31,14 @@
             "index": "pypi",
             "version": "==3.0.6"
         },
+        "django-debug-toolbar": {
+            "hashes": [
+                "sha256:eabbefe89881bbe4ca7c980ff102e3c35c8e8ad6eb725041f538988f2f39a943",
+                "sha256:ff94725e7aae74b133d0599b9bf89bd4eb8f5d2c964106e61d11750228c8774c"
+            ],
+            "index": "pypi",
+            "version": "==2.2"
+        },
         "django-tagging": {
             "hashes": [
                 "sha256:28d68fa4831705e51ad7d1e845ed6dd9e354f9b6f8a5f63b655a430646ef4e8d",
@@ -39,13 +47,21 @@
             "index": "pypi",
             "version": "==0.5.0"
         },
+        "importlib-metadata": {
+            "hashes": [
+                "sha256:2a688cbaa90e0cc587f1df48bdc97a6eadccdcd9c35fb3f976a09e3b5016d90f",
+                "sha256:34513a8a0c4962bc66d35b359558fd8a5e10cd472d37aec5f66858addef32c1e"
+            ],
+            "markers": "python_version < '3.8'",
+            "version": "==1.6.0"
+        },
         "markdown": {
             "hashes": [
-                "sha256:90fee683eeabe1a92e149f7ba74e5ccdc81cd397bd6c516d93a8da0ef90b6902",
-                "sha256:e4795399163109457d4c5af2183fbe6b60326c17cfdf25ce6e7474c6624f725d"
+                "sha256:1fafe3f1ecabfb514a5285fca634a53c1b32a81cb0feb154264d55bf2ff22c17",
+                "sha256:c467cd6233885534bf0fe96e62e3cf46cfc1605112356c4f9981512b8174de59"
             ],
             "index": "pypi",
-            "version": "==3.2.1"
+            "version": "==3.2.2"
         },
         "pygments": {
             "hashes": [
@@ -68,6 +84,13 @@
                 "sha256:e162203737712307dfe78860cc56c8da8a852ab2ee33750e33aeadf38d12c548"
             ],
             "version": "==0.3.1"
+        },
+        "zipp": {
+            "hashes": [
+                "sha256:aa36550ff0c0b7ef7fa639055d797116ee891440eac1a56f378e2d3179e0320b",
+                "sha256:c599e4d75c98f6798c509911d08a22e6c021d074469042177c8c86fb92eefd96"
+            ],
+            "version": "==3.1.0"
         }
     },
     "develop": {}

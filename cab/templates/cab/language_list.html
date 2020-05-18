@@ -2,8 +2,6 @@
 
 {% block content %}
     {% for obj in object_list %}
-    <h2><a href="{{obj.get_absolute_url}}">{{obj.title}}</a>
-    </h2>
-      <p>{{obj.highlighted_code | safe}}</p>
+      <p>{{obj.name}}</p>
     {% endfor %}
 {% endblock content %}
