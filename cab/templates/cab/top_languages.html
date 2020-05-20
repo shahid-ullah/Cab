@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
-  <h1>Top authors</h1>
+  <h1>Top Languages</h1>
   <ol>
-    {% for author in authors %}
-    <li>{{ author.username }}</li>
+    {% for language in languages %}
+    <li>{{ language.name }}</li>
     {% endfor %}
   </ol>
 {% endblock content %}

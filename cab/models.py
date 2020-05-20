@@ -5,10 +5,13 @@ from django.urls import reverse
 
 from pygments import formatters, highlight, lexers
 from markdown import markdown
+
+from .managers import SnippetManager, LanguageManager
 from tagging.fields import TagField
 
 
 class Language(models.Model):
+    objects = LanguageManager()
     name = models.CharField(max_length=100)
     slug = models.SlugField(unique=True)
     language_code = models.CharField(max_length=50)
@@ -28,6 +31,7 @@ class Language(models.Model):
 
 
 class Snippet(models.Model):
+    objects = SnippetManager()
     title = models.CharField(max_length=225)
     language = models.ForeignKey(Language, on_delete=models.CASCADE)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
