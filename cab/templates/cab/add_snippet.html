@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<h1>{% if add %}Add a{% else %}Edit your{% endif %} snippet</h1>
+<p>Use the form below to {% if add %}add{% else %}edit {% endif %}
+  your snippet; all fields are required</p>
+
+<form method="POST">
+  {% csrf_token %}
+  {{ form|crispy }}
+  <button type="submit">Submit</button>
+</form>
+{% endblock content %}

@@ -1,13 +1,15 @@
+#  Cab/cab/models.py
 import datetime
-from django.db import models
-from django.contrib.auth.models import User
-from django.urls import reverse
 
-from pygments import formatters, highlight, lexers
+from django.db import models
+from django.urls import reverse
+from django.contrib.auth.models import User
+
 from markdown import markdown
+from pygments import formatters, highlight, lexers
+from tagging.fields import TagField
 
 from .managers import SnippetManager, LanguageManager
-from tagging.fields import TagField
 
 
 class Language(models.Model):
@@ -49,17 +51,35 @@ class Snippet(models.Model):
     def __str__(self):
         return self.title
 
-    def save(self, force_insert=False, force_update=False):
+    def save(self, force_insert=False, force_update=False, using=None):
         if not self.id:
             self.pub_date = datetime.datetime.now()
         self.updated_date = datetime.datetime.now()
         self.description_html = markdown(self.description)
         self.highlighted_code = self.highlight()
-        super(Snippet, self).save(force_insert, force_update)
+        super(Snippet, self).save(force_insert, force_update, using)
 
     def get_absolute_url(self):
-        return reverse("snippet_detail", args=[self.id,])
+        return reverse("snippet_detail", args=[self.id, ])
 
     def highlight(self):
         return highlight(self.code, self.language.get_lexer(),
                          formatters.HtmlFormatter(lineos=True))
+
+
+class Bookmark(models.Model):
+    snippet = models.ForeignKey(Snippet, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE,
+                             related_name='cab_bookmarks')
+    date = models.DateTimeField(editable=False)
+
+    class Meta:
+        ordering = ['-date', ]
+
+    def __str__(self):
+        return "%s bookmarked by %s" % (self.snippet, self.user)
+
+    def save(self):
+        if not self.id:
+            self.date = datetime.datetime.now()
+        super(Bookmark, self).save()

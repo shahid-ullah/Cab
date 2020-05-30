@@ -3,7 +3,12 @@
 {% block content %}
     {% for obj in object_list %}
     <h2><a href="{{obj.get_absolute_url}}">{{obj.title}}</a>
+        <a href="#"> | Bookmark</a>
     </h2>
       <p>{{obj.highlighted_code | safe}}</p>
     {% endfor %}
 {% endblock content %}
+
+{% block sidebar_middle %}
+  <p><a href="{% url 'add_snippet' %}">Add Snippet</a></p>
+{% endblock sidebar_middle %}

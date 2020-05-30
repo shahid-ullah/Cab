@@ -25,5 +25,6 @@ urlpatterns = [
 if settings.DEBUG:
     import debug_toolbar
     urlpatterns = [
+        # No quotation mark in include methods
         path('__debug__/', include(debug_toolbar.urls)),
     ] + urlpatterns
