@@ -2,9 +2,10 @@
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView
 from django.http import HttpResponseRedirect, HttpResponseForbidden
+from django.contrib.auth.decorators import login_required
 
 from .forms import SnippetForm, AddressForm
-from .models import Snippet, Language
+from .models import Snippet, Language, Bookmark
 
 
 class SnippetListView(ListView):
@@ -77,3 +78,28 @@ def edit_snippet(request, snippet_id):
 def crispy_view(request):
     form = AddressForm
     return render(request, 'cab/crispy_template.html', {"form": form, })
+
+
+@login_required
+def add_bookmark(request, snippet_id):
+    snippet = get_object_or_404(Snippet, pk=snippet_id)
+    try:
+        Bookmark.objects.get(user__pk=request.user.id,
+                             snippet__pk=snippet_id)
+    except Bookmark.DoesNotExist:
+        Bookmark.objects.create(
+                            user=request.user,
+                            snippet=snippet)
+    return HttpResponseRedirect(snippet.get_absolute_url())
+
+
+def delete_bookmark(request, snippet_id):
+    snippet = get_object_or_404(Snippet, pk=snippet_id)
+
+    if request.method == "POST":
+        Bookmark.objects.filter(user__pk=request.user.id,
+                                snippet__pk=snippet.id).delete()
+        return HttpResponseRedirect(snippet.get_absolute_url())
+    else:
+        return render(request, "cab/confirm_bookmark_delete.html",
+                      {"snippet": snippet})

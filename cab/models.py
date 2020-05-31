@@ -79,7 +79,7 @@ class Bookmark(models.Model):
     def __str__(self):
         return "%s bookmarked by %s" % (self.snippet, self.user)
 
-    def save(self):
+    def save(self, force_insert=False, force_update=False, using=None):
         if not self.id:
             self.date = datetime.datetime.now()
         super(Bookmark, self).save()

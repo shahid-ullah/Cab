@@ -10,12 +10,17 @@ from .views import (
     add_snippet,
     edit_snippet,
     crispy_view,
+    add_bookmark,
+    delete_bookmark,
 )
 
 urlpatterns = [
     path('<int:pk>/', SnippetDetailView.as_view(),
          name='snippet_detail'),
     path('languages/', LanguageListView.as_view(), name='language_list'),
+    path('bookmark/<snippet_id>/', add_bookmark, name='add_bookmark'),
+    path('bookmark_delete/<snippet_id>/', delete_bookmark,
+         name='delete_bookmark'),
     path('crispy/', crispy_view, name='crispy_view'),
     path('top_authors/', top_authors, name='top_authors'),
     path('top_languages/', top_languages, name='top_languages'),
