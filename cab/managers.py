@@ -13,6 +13,9 @@ class LanguageManager(models.Manager):
 class SnippetManager(models.Manager):
     def top_authors(self):
         # print(f"self: {self}")
-        top_authors = User.objects.annotate(score=Count('snippet')).order_by('score')
+        top_authors = User.objects.annotate(
+                    score=Count('snippet')).order_by('score')
         return top_authors
 
+    def most_bookmarked(self):
+        return self.annotate(score=Count('bookmark')).order_by('score')

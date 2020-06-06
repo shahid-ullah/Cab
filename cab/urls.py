@@ -12,6 +12,8 @@ from .views import (
     crispy_view,
     add_bookmark,
     delete_bookmark,
+    user_bookmarks,
+    most_bookmarked,
 )
 
 urlpatterns = [
@@ -26,5 +28,8 @@ urlpatterns = [
     path('top_languages/', top_languages, name='top_languages'),
     path('add_snippet/', add_snippet, name='add_snippet'),
     path('edit/<int:snippet_id>/', edit_snippet, name='edit_snippet'),
-    path('', SnippetListView.as_view(), name='snippet_list'),
+    path('all/', SnippetListView.as_view(), name='snippet_list'),
+    path('all/', SnippetListView.as_view(), name='snippet_list'),
+    path('bookmarks/', most_bookmarked, name='bookmarks'),
+    path('', user_bookmarks, name='user_bookmarks'),
 ]

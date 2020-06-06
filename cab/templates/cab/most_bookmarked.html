@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  {% for snippet in bookmarks %}
+  <ul>
+    <a href="{% url 'snippet_detail' snippet.id %}"><li>{{ snippet.title }}</li></a>
+  </ul>
+  {% endfor %}
+{% endblock content %}

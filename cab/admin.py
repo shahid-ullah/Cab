@@ -21,7 +21,7 @@ class SnippetAdmin(admin.ModelAdmin):
 admin.site.register(Snippet, SnippetAdmin)
 
 
-class BookmarkAdmin(admin.modelAdmin):
+class BookmarkAdmin(admin.ModelAdmin):
     pass
 
 

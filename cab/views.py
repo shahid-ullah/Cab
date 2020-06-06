@@ -103,3 +103,14 @@ def delete_bookmark(request, snippet_id):
     else:
         return render(request, "cab/confirm_bookmark_delete.html",
                       {"snippet": snippet})
+
+
+def user_bookmarks(request):
+    queryset = Bookmark.objects.filter(user__pk=request.user.id)
+    return render(request, "cab/user_bookmarks.html", {"bookmarks": queryset})
+
+
+def most_bookmarked(request):
+    bookmarks = Snippet.objects.most_bookmarked()
+    return render(request, "cab/most_bookmarked.html",
+                  {"bookmarks": bookmarks, })
